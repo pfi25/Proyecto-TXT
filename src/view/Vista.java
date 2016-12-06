@@ -2,16 +2,13 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.Font; 
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import listener.Oyente;
 
 public class Vista extends JFrame{
  
@@ -31,24 +28,15 @@ public class Vista extends JFrame{
 		boton.setForeground(Color.YELLOW);
 		add(area,BorderLayout.CENTER);
 		add(boton,BorderLayout.SOUTH);
-		boton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				File archivo = new File("C:/Users/Gerardo Shimokawa/Desktop/javatxt.txt");
-				try {
-					String texto = area.getText()+"\r\n";
-					FileWriter txt = new FileWriter(archivo,true);
-					
-					for (int i = 0; i < texto.length(); i++) {
-						txt.write(texto.charAt(i));
-					}
-					area.setText("");
-					txt.close();
-				} catch (IOException e1) { 
-					e1.printStackTrace();
-				} 
-			}
-		});
+		boton.addActionListener(new Oyente(this));
 	}
+
+	public JTextArea getArea() {
+		return area;
+	}
+
+	public void setArea(JTextArea area) {
+		this.area = area;
+	}
+	
 }
