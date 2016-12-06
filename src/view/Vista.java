@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -23,6 +24,7 @@ public class Vista extends JFrame{
 		setBounds(400,300,300,300);
 		setLayout(new BorderLayout());
 		area = new JTextArea(30,100);
+		area.setFont(new Font("Courier",Font.BOLD,24));
 		boton = new JButton("Enviar");
 		add(area,BorderLayout.CENTER);
 		add(boton,BorderLayout.SOUTH);
