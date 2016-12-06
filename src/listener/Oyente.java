@@ -2,6 +2,7 @@ package listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,12 +24,11 @@ public class Oyente implements ActionListener {
 		try {
 			String texto = vista.getArea().getText()+"\r\n";
 			FileWriter txt = new FileWriter(archivo,true);
+			BufferedWriter buffer = new BufferedWriter(txt);
 			
-			for (int i = 0; i < texto.length(); i++) {
-				txt.write(texto.charAt(i));
-			}
+			buffer.write(texto);
 			vista.getArea().setText("");
-			txt.close();
+			buffer.close();
 		} catch (IOException e1) { 
 			e1.printStackTrace();
 		} 
